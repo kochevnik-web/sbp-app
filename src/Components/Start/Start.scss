@@ -1,0 +1,61 @@
+.Start {
+    width: 100%;
+    height: calc(100vh - 64px);
+    background-color: #EFEADC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .content {
+        width: 35%;
+
+        .start-header {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            color: #1A0940;
+
+            span {
+                font-size: 3.2em;
+            }
+
+            img {
+                width: 18em;
+                margin: 0 0 0 5.5em
+            }
+        }
+
+        .title {
+            line-height: 5.3em;
+            font-weight: bold;
+            margin: 3em 0 2em;
+
+            span {
+                font-size: 4.2em;
+                display: block;
+            }
+        }
+
+        p {
+            color: #1A0940;
+            line-height: 3.22em;
+
+            span {
+                font-size: 2.3em;
+            }
+        }
+
+        .start-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 38em;
+            height: 7em;
+            margin: 3.5em 0 0 0;
+
+            span {
+                font-size: 3.2em;
+            }
+        }
+    }
+}

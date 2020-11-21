@@ -1,15 +1,16 @@
 import React, {useContext} from 'react'
-import './App.css';
+import './App.scss';
 import { Context } from "../../context";
+
+import Start from '../Start/Start'
 
 function App() {
 
-  const { rooms } = useContext(Context);
-  console.log(rooms);
-
+	const { em } = useContext(Context);
+console.log(em)
 	return (
-		<div className="App">
-			SBP BANK
+		<div className="App" style={{fontSize: em}}>
+			<Start />
 		</div>
 	);
 }
