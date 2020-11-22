@@ -208,8 +208,13 @@
       (function(){
         const root = document.getElementById('root');
         const h = window.innerWidth / 2.17734
-        root.style.height = h + 'px';
-        window.addEventListener('resize',() => {root.style.height = h + 'px';});
+        if(window.innerWidth > window.innerHeight) {
+          root.style.height = h + 'px';
+          window.addEventListener('resize',() => {root.style.height = h + 'px';});
+        } else {
+          root.style.minHeight = '100vh';
+          window.addEventListener('resize',() => {root.style.minHeight = '100vh';});
+        }
       }());
   </script>
     <!--
@@ -301,13 +306,14 @@
 
     <script>
       window.onload = function(){
-        const root = document.getElementById('root');
-        const h = window.innerWidth / 2.17734;
-        const s = window.innerHeight - h - 64;
-        if (s < 0) {
-          setTimeout(function(){ window.scrollTo( 0, s * -1 ) });
+        if(window.innerWidth > window.innerHeight && window.innerWidth >= 768) {
+          const root = document.getElementById('root');
+          const h = window.innerWidth / 2.17734;
+          const s = window.innerHeight - h - 64;
+          if (s < 0) {
+            setTimeout(function(){ window.scrollTo( 0, s * -1 ) });
+          }
         }
-        window.addEventListener('resize',() => {});
       };
     </script>
   </body>

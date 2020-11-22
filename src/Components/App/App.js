@@ -7,10 +7,13 @@ import Start from '../Start/Start'
 
 function App() {
 
-	const { em } = useContext(Context);
+	const { em, isMobile } = useContext(Context);
+	let clx = ['App'];
+
+	if(isMobile){clx.push('app-mobile')}
 
 	return (
-		<motion.div className="App" style={{fontSize: em}} animate={{opacity: 1}} transition={{duration: 0.5}} initial={{opacity: 0}}>
+		<motion.div className={clx.join(' ')} style={{fontSize: em}} animate={{opacity: 1}} transition={{duration: 0.5}} initial={{opacity: 0}}>
 			<Start />
 		</motion.div>
 	);

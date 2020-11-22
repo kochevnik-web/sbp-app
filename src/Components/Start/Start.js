@@ -6,10 +6,10 @@ import { Context } from "../../context";
 
 function App() {
 
-  const { em } = useContext(Context);
+  const { isMobile } = useContext(Context);
 
 	return (
-		<div  className="Start" style={{height: window.innerWidth / 2.17734}}>
+		<div  className="Start" style={{height: isMobile ? 'auto' : window.innerWidth / 2.17734}}>
 			<div className="content">
                 <div className="start-header">
                     <span>Игра</span>
@@ -20,8 +20,11 @@ function App() {
                     <span style={{color: '#007C37'}}>Сможешь ли ты собрать деньги</span>
                     <span style={{color: '#65B32E'}}>на линолеум?</span>
                 </div>
-                <div className="title-foreb">
-                    
+                <div className="title-for-mobile">
+                    <span style={{color: '#0095D4'}}>В бой идёт родительский</span> 
+                    <span style={{color: '#007C37'}}>комитет. Сможешь ли ты</span>
+                    <span style={{color: '#65B32E'}}>собрать деньгина</span>
+                    <span style={{color: '#65B32E'}}>линолеум?</span>
                 </div>
                 <p>
                     <span>
@@ -205,8 +208,8 @@ function App() {
             </motion.div>
 
             {/* Девушка у трибуны */}
-            <motion.div animate={{x: 0, opacity: 1,scale: 1}} transition={{duration: 0.4, delay: 0.6, easy: 'easyInOut'}} initial={{x: '-40em', opacity: 0, scale: 3}} className="svg-5">
-                <svg width="24.2em" height="40.6wm" viewBox="0 0 242 406" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <motion.div animate={{x: 0, opacity: 1,scale: 1}} transition={{duration: 0.4, delay: 0.6, easy: 'easyInOut'}} initial={{x: '40em', opacity: 0, scale: 3}} className="svg-5">
+                <svg width={isMobile ? '86em' : "24.2em"} height="40.6wm" viewBox="0 0 242 406" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M75.5527 160.87L61.7776 154.297L50.5218 188.614C47.5792 190.406 41.5089 194.426 40.4912 197.684C39.1382 202.012 40.0679 211.072 41.6991 210.937C43.3302 210.802 45.7649 201.2 47.1178 200.524C48.4708 199.849 50.3629 197.82 50.3629 199.308C50.3629 200.796 49.0099 203.5 49.6873 203.906C50.3629 204.312 52.528 200.122 54.0158 199.308C55.2737 198.622 55.9165 193.744 56.9584 191.166L75.5527 160.87Z" fill="#FFDD9E"/>
                     <path d="M42.3661 391.165C42.0429 395.565 35.8379 395.611 28.7949 394.794C21.7518 393.977 23.6249 395.76 13.7636 395.896C3.90232 396.033 0.505178 392.774 0.0265405 391.366C-0.398531 390.117 4.34975 389.064 9.42988 387.827C10.0692 387.673 10.7103 387.513 11.3513 387.35C17.0794 385.894 20.8741 381.607 25.7745 377.862C30.4174 374.316 36.4047 361.481 36.4047 361.481L49.8757 360.873C49.8757 360.873 44.2029 372.378 42.0723 377.339C40.8196 380.257 41.3518 383.841 41.8978 386.592C42.1916 388.086 42.4818 389.615 42.3661 391.165Z" fill="#FFDD9E"/>
                     <path d="M28.7949 394.794C21.7518 393.977 23.6249 395.76 13.7636 395.896C3.90232 396.033 0.505178 392.774 0.0265405 391.366C-0.398531 390.117 4.34975 389.064 9.42987 387.827L9.49041 387.92C9.49041 387.92 15.8389 391.328 23.9602 390.512C30.5781 389.849 37.3326 387.086 41.8978 386.592C42.1898 388.088 42.48 389.617 42.3643 391.167C42.0429 395.565 35.8379 395.611 28.7949 394.794Z" fill="#1A0940"/>
@@ -247,7 +250,7 @@ function App() {
             </motion.div>
 
             {/* Сбор денег */}
-            <motion.div animate={{x: 0, y: 0, opacity: 1,scale: 1}} transition={{duration: 0.4, delay: 0.8, easy: 'easyInOut'}} initial={{x: '-40em', y: '10em', opacity: 0, scale: 3}} className="svg-6">
+            <motion.div animate={{x: 0, y: 0, opacity: 1,scale: 1}} transition={{duration: 0.4, delay: 0.8, easy: 'easyInOut'}} initial={{x: '40em', y: '10em', opacity: 0, scale: 3}} className="svg-6">
                 <svg width="32em" height="32.8em" viewBox="0 0 359 368" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M63.1876 352.541C63.1876 352.541 34.1262 286.245 32.066 255.773C93.0849 258.398 77.7444 352.541 77.7444 352.541C77.7444 356.931 74.2069 360.494 69.8471 360.494H55.2904C59.6502 360.494 63.1876 356.931 63.1876 352.541Z" fill="#9E5DA2"/>
                     <path d="M64.2712 311.439C64.2712 311.439 77.5249 319.128 78.4427 311.439C78.4427 311.439 84.6567 311.159 84.6567 337.511C84.6567 351.143 88.2225 363.427 55.2903 360.492C55.2903 360.492 64.1657 358.517 64.1657 342.472C64.164 316.477 64.2712 311.439 64.2712 311.439Z" fill="#B281B8"/>
