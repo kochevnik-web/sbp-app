@@ -1,10 +1,11 @@
 .Start {
     width: 100%;
-    height: calc(100vh - 64px);
+    height: 100%;
     background-color: #EFEADC;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 
     .content {
         width: 35%;
@@ -57,5 +58,40 @@
                 font-size: 3.2em;
             }
         }
+    }
+
+    .svg-1 {
+        position: absolute;
+        top: 4em;
+        left: 6em;
+    }
+
+    .svg-2 {
+        position: absolute;
+        left: 27.5em;
+    }
+
+    .svg-3 {
+        position: absolute;
+        left: 11.5em;
+        bottom: 4em;
+    }
+
+    .svg-4 {
+        position: absolute;
+        right: 13em;
+        top: 4em;
+    }
+
+    .svg-5 {
+        position: absolute;
+        right: 29em;
+        margin-top: -5em;
+    }
+
+    .svg-6 {
+        position: absolute;
+        right: 6em;
+        bottom: 4em;
     }
 }
