@@ -10,8 +10,10 @@ export default function ContextProvider({ children }) {
         return window.innerWidth < window.innerHeight &&  window.innerWidth < 768 ? true : false;
     }
 
+    const defaultEm = 2.17734;
     const [em, setEm] = useState(10);
     const [isMobile, setIsMobile] = useState(false);
+    const [isGameLvl, setGemLvl] = useState(true);
 
     useEffect(()=>{
         setEm(getEm());
@@ -20,7 +22,13 @@ export default function ContextProvider({ children }) {
 
     const data = {
         em,
-        isMobile
+        defaultEm,
+        isMobile,
+        isGameLvl,
+    }
+
+    const handleGameLevel = () => {
+        setGemLvl(true);
     }
 
     window.addEventListener('resize', () =>{
@@ -28,7 +36,7 @@ export default function ContextProvider({ children }) {
         setIsMobile(getIsMobile())
     });
     return (
-        <Context.Provider value={{ ...data }}>
+        <Context.Provider value={{ ...data, handleGameLevel }}>
         {children}
         </Context.Provider>
     );

@@ -1,0 +1,28 @@
+.Game {
+    width: 100%;
+    background-color: #EFEADC;
+    position: relative;
+    background-image: url(../Game/img/bg.svg);
+    background-size: 123%;
+    background-position: center top;
+    background-repeat: no-repeat;
+
+    .scene {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 0;
+    }
+
+    .people-left {
+        position: absolute;
+        bottom: -0.5em;
+        left: 34em;
+    }
+
+    .people-right {
+        position: absolute;
+        bottom: -0.5em;
+        left: 102em;    
+    }
+}

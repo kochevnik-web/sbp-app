@@ -106,6 +106,10 @@
         right: 6em;
         bottom: 4em;
     }
+
+    &.hide {
+        display: none;
+    }
 }
 
 .app-mobile {
