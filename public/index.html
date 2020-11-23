@@ -207,7 +207,7 @@
   <script>
       (function(){
         const root = document.getElementById('root');
-        const h = window.innerWidth / 2.17734
+        const h = window.innerWidth <= 768 ? window.innerWidth / 1.731707 : window.innerWidth / 2.17734
         if(window.innerWidth > window.innerHeight) {
           root.style.height = h + 'px';
           window.addEventListener('resize',() => {root.style.height = h + 'px';});
@@ -306,9 +306,11 @@
 
     <script>
       window.onload = function(){
-        if(window.innerWidth > window.innerHeight && window.innerWidth >= 768) {
+        if(window.innerWidth > window.innerHeight) {
           const root = document.getElementById('root');
-          const h = window.innerWidth / 2.17734;
+          const h = window.innerWidth <= 768 ? window.innerWidth / 1.731707 : window.innerWidth / 2.17734;
+          console.log(window.innerHeight);
+          console.log(h);
           const s = window.innerHeight - h - 64;
           if (s < 0) {
             setTimeout(function(){ window.scrollTo( 0, s * -1 ) });

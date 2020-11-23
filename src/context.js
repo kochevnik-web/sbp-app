@@ -10,7 +10,7 @@ export default function ContextProvider({ children }) {
         return window.innerWidth < window.innerHeight &&  window.innerWidth < 768 ? true : false;
     }
 
-    const defaultEm = 2.17734;
+    const defaultEm = window.innerWidth <= 768 ? 1.731707 : 2.17734;
     const [em, setEm] = useState(10);
     const [isMobile, setIsMobile] = useState(false);
     const [isGameLvl, setGemLvl] = useState(true);

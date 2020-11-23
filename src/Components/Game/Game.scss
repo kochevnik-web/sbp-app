@@ -7,17 +7,31 @@
     background-position: center top;
     background-repeat: no-repeat;
 
+    @media(max-width: 768px){
+        background-image: none;
+    }
+
     .scene {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
         top: 0;
+
+        @media(max-width: 768px){
+            left: 2em;
+            transform: translateX(0);
+            top: -5em;
+        }
     }
 
     .people-left {
         position: absolute;
         bottom: -0.5em;
         left: 34em;
+
+        @media(max-width: 768px){
+            display: none;
+        }
     }
 
     .people-right {

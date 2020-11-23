@@ -9,7 +9,7 @@ export default function Game() {
     function getRandObj (count){
         let arr = [];
         for (let i = 0; i < count; i++) {
-            arr.push({d: Math.floor(Math.random() * (3 - 1 + 1)) + 1, s: Math.floor(Math.random() * (7 - 4 + 1)) + 4})
+            arr.push({d: Math.floor(Math.random() * (5 - 1 + 1)) + 1, s: Math.floor(Math.random() * (7 - 4 + 1)) + 4})
         }
         return arr;
     }
