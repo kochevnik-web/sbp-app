@@ -1,0 +1,17 @@
+.Overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #EFEADC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 64px;
+
+    svg {
+        width: 161em;
+        height: 268em;
+    }
+}

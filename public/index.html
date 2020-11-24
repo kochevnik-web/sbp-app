@@ -212,8 +212,8 @@
           root.style.height = h + 'px';
           window.addEventListener('resize',() => {root.style.height = h + 'px';});
         } else {
-          root.style.minHeight = '100vh';
-          window.addEventListener('resize',() => {root.style.minHeight = '100vh';});
+          root.style.minHeight = 'calc(100vh - 64px)';
+          window.addEventListener('resize',() => {root.style.minHeight = 'calc(100vh - 64px)';});
         }
       }());
   </script>
@@ -313,6 +313,9 @@
           console.log(h);
           const s = window.innerHeight - h - 64;
           if (s < 0) {
+            window.addEventListener('resize',() => {
+              setTimeout(function(){ window.scrollTo( 0, s * -1 ) });
+            });
             setTimeout(function(){ window.scrollTo( 0, s * -1 ) });
           }
         }

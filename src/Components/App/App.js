@@ -5,6 +5,7 @@ import { Context } from "../../context";
 
 import Start from '../Start/Start'
 import Game from '../Game/Game'
+import Overlay from '../Overlay/Overlay'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
 		<motion.div className={clx.join(' ')} style={{fontSize: em}} animate={{opacity: 1}} transition={{duration: 0.5}} initial={{opacity: 0}}>
 			<Start />
 			{isGameLvl ? <Game /> : ''}
+			{isMobile && <Overlay />}
 		</motion.div>
 	);
 }
