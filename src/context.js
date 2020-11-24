@@ -15,11 +15,29 @@ export default function ContextProvider({ children }) {
     const [isMobile, setIsMobile] = useState(false);
     const [isGameLvl, setGemLvl] = useState(true);
     const [startGame, setStartGame] = useState(false);
+    const [hideHit, setHideHit] = useState(false);
+    const [countMoney, setCountMoney] = useState(0);
+    const [timer, setTimer] = useState(20);
+    const [final, setFinal] = useState(false);
 
     useEffect(()=>{
         setEm(getEm());
         setIsMobile(getIsMobile());
     },[]);
+
+    useEffect(()=>{
+        let t = timer;
+        if(timer > 0 && startGame){
+            setTimeout(()=>{
+                setTimer(t -1);
+            }, 1000);
+        }
+
+        if(timer <= 0 && !final){
+            setStartGame(false);
+            setFinal(true);
+        } 
+    },[startGame, timer, final]);
 
     const data = {
         em,
@@ -27,6 +45,10 @@ export default function ContextProvider({ children }) {
         isMobile,
         isGameLvl,
         startGame,
+        hideHit,
+        countMoney,
+        timer,
+        final,
     }
 
     const handleGameLevel = () => {
@@ -35,6 +57,7 @@ export default function ContextProvider({ children }) {
 
     const onStartGame = () => {
         setStartGame(true);
+        setHideHit(true);
     }
 
     window.addEventListener('resize', () =>{

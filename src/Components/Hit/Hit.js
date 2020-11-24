@@ -7,11 +7,11 @@ import './Hit.scss';
 
 export default function Hit() {
 
-    const { onStartGame, startGame } = useContext(Context);
+    const { onStartGame, hideHit } = useContext(Context);
 
     return (
         <AnimatePresence>
-            {!startGame && (
+            {!hideHit && (
                 <motion.div className="Hit" animate={{opacity: 1}} inlist={{opacity: 0}} transition={{duration: 0.5}} exit={{opacity: 0}}>
                     <div className="hit-message">
                         <div className="content">

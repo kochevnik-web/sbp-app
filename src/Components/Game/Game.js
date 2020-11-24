@@ -5,6 +5,7 @@ import './Game.scss';
 import { Context } from "../../context";
 
 import Hit from '../Hit/Hit'
+import Timer from '../Timer/Timer'
 
 export default function Game() {
 
@@ -798,6 +799,7 @@ export default function Game() {
                     <path d="M28.5266 441.753H77.8386C84.7456 441.753 90.4807 437.534 90.9827 432.084L100.63 327.469C101.187 321.427 98.5726 316.283 90.9156 316.283H15.9937C8.35865 316.283 5.75164 321.4 6.27564 327.427L15.3777 432.042C15.8547 437.509 21.5996 441.753 28.5266 441.753Z" fill="#1A0940"/>
                 </svg>
             </div>
+            <Timer />
             <Hit />
         </motion.div>
     )

@@ -1,0 +1,25 @@
+.Timer {
+    position: absolute;
+    right: 2em;
+    top: 2em;
+    display: flex;
+    align-items: center;
+    background: #FFF2DA;
+    padding: 0.2em 1em 0em 3em;
+    border-radius: 3em;
+
+    .timer-counter {
+        margin: 0 0.5em 0 0;
+
+        svg {
+            position: relative;
+        }
+    }
+
+    .timer-time {
+        font-size: 3.8em;
+        font-weight: bold;
+        width: 2.1em;
+        z-index: 25;
+    }
+}
