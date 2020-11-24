@@ -37,6 +37,23 @@
     .people-right {
         position: absolute;
         bottom: -0.5em;
-        left: 102em;    
+        left: 102em;
+
+        @media(max-width: 768px){
+            left: 2em;
+        }
+
+        svg {
+            @media(max-width: 768px){
+                width: 116em;
+                height: 90.26em;
+            }
+        }
+    }
+}
+
+.svg-mobile-hide {
+    @media(max-width: 768px){
+        display: none;
     }
 }
