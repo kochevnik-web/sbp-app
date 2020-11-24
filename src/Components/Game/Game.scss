@@ -6,6 +6,7 @@
     background-size: 123%;
     background-position: center top;
     background-repeat: no-repeat;
+    overflow: hidden;
 
     @media(max-width: 768px){
         background-image: none;

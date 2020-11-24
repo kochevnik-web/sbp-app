@@ -1,0 +1,82 @@
+// 2.95798
+.Hit {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    background: rgba(0, 0, 0, .75);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .hit-message {
+        width: 91.7em;
+        background: #EFEADC;
+        padding: 6.8em;
+
+        @media(max-width: 768px){
+            width: 178.5em;
+            padding: 6.45em;
+        }
+
+        .content {
+            line-height: 4.3em;
+            color: #1A0940;
+            margin: 0 0 3em;
+
+            @media(max-width: 768px){
+                line-height: 6.5em;
+                margin: 0 0 3.38em;
+            }
+
+            span {
+                font-size: 3em;
+
+                @media(max-width: 768px){
+                    font-size: 6.08em;
+                }
+            }
+        }
+
+        .buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .btn-start-game {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 38em;
+                height: 7em;
+
+                @media(max-width: 768px){
+                    width: 110em;
+                    height: 18em;
+                }
+
+                span {
+                    font-size: 3.2em;
+
+                    @media(max-width: 768px){
+                        font-size: 8.2em;
+                    }
+                }
+
+                svg {
+                    height: 4.8em;
+                    width: 4.8em;
+                    margin: 0 0 0 1.1em;
+
+                    @media(max-width: 768px){
+                        height: 13.8em;
+                        width: 13.8em;
+                        margin: 0 0 0 3.1em;
+                    }
+                }
+            }
+        }
+    }
+}
