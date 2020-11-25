@@ -1,0 +1,21 @@
+.Chip {
+    position: absolute;
+
+    .chip-wrap{
+
+        &.fly {
+            transition: 0.5s;
+    
+            .chip-animate {
+                transition: all 1s;
+                opacity: 0;
+            }
+        }
+    }
+
+    svg {
+        cursor: pointer;
+        height: 7.2em;
+        width: 7.2em;
+    }
+}

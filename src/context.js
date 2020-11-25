@@ -17,7 +17,7 @@ export default function ContextProvider({ children }) {
     const [startGame, setStartGame] = useState(false);
     const [hideHit, setHideHit] = useState(false);
     const [countMoney, setCountMoney] = useState(0);
-    const [timer, setTimer] = useState(20);
+    const [timer, setTimer] = useState(100);
     const [final, setFinal] = useState(false);
 
     useEffect(()=>{

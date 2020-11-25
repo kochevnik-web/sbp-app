@@ -6,9 +6,6 @@ import './Timer.scss';
 import { Context } from "../../context";
 
 export default function Timer() {
-    function getTimer(timer){
-        return timer < 10 ? '0' + timer : timer;
-    }
 
     const { countMoney, timer, test } = useContext(Context);
 
