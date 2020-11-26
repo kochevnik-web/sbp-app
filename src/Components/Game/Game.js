@@ -7,6 +7,7 @@ import { Context } from "../../context";
 import Hit from '../Hit/Hit'
 import Timer from '../Timer/Timer'
 import Chip from '../Chip/Chip'
+import ChipError from '../ChipError/ChipError';
 
 export default function Game() {
 
@@ -26,7 +27,7 @@ export default function Game() {
 
     let animationData = getRandObj(4);
 
-    const { isMobile, timer2, defaultEm, startGame } = useContext(Context);
+    const { isMobile, timer2, timer3, defaultEm, startGame } = useContext(Context);
 
     const variants ={
         start: {scaleX: -1},
@@ -39,8 +40,12 @@ export default function Game() {
         }
     }, [curTime, timer2])
 
-    const elements = new Array(800).fill(0).map((el, idx, arr) => {
-        if(startGame && timer2 >=idx) return <Chip x={refRight} y={refTop} />
+    const elements = new Array(100).fill(0).map((el, idx, arr) => {
+         return (startGame && timer2 >=idx) ? <Chip key={idx} x={refRight} y={refTop} /> : '';
+    });
+
+    const elementsErrors = new Array(50).fill(0).map((el, idx, arr) => {
+         return (startGame && timer3 >=idx) ? <ChipError key={idx} x={refRight} y={refTop} /> : '';
     });
 
     return (
@@ -841,6 +846,7 @@ export default function Game() {
             </div>
             
             <Timer />
+            {elementsErrors}
             {elements}
             <Hit />
         </motion.div>

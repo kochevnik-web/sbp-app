@@ -22,6 +22,7 @@ export default function ContextProvider({ children }) {
     const [countMoney, setCountMoney] = useState(0);
     const [timer, setTimer] = useState(60);
     const [timer2, setTimer2] = useState(0);
+    const [timer3, setTimer3] = useState(0);
     const [final, setFinal] = useState(false);
 
     useEffect(()=>{
@@ -52,6 +53,15 @@ export default function ContextProvider({ children }) {
         }
     }, [startGame, timer2])
 
+    useEffect(() => {
+        let t = timer3;
+        if(startGame){
+            setTimeout(()=>{
+                setTimer3(t + 1);
+            }, 1900);
+        }
+    }, [startGame, timer3])
+
     const data = {
         em,
         defaultEm,
@@ -62,6 +72,7 @@ export default function ContextProvider({ children }) {
         countMoney,
         timer,
         timer2,
+        timer3,
         final,
     }
 

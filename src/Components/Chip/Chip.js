@@ -45,6 +45,16 @@ export default function Chip({x, y}) {
         finish: {opacity: 1},
     }
 
+    let variants2 = {
+        start: {y: refTop * - 1, transitionEnd: {display: 'none'}},
+        finish: {y: 0},
+    }
+    let variants3 = {
+        start: {x: refRight, scale: 0.5, opacity: 0},
+        finish: {x: 0, scale: 1, opacity: 1},
+    }
+
+
     return (
         <AnimatePresence>
             <motion.div
@@ -59,17 +69,27 @@ export default function Chip({x, y}) {
                 <motion.div
                     className={fly ? "chip-wrap-hide fly2" : "chip-wrap-hide"}
                     variants={variants}
-                    animate={fly ? "finish" : 'start'}
+                    // animate={fly ? "finish" : 'start'}
+                    animate="finish"
                     initial="finish"
                     exit="finish"
                     onClick={hendleCounter}
                 >
-                    <div className={clx.join(' ')}
-                        style={{transform: fly ? 'translateY(-' + refTop + 'px)' : null}}
+                    <motion.div
+                        variants={variants2}
+                        className="chip-wrap"
+                        initial="finish"
+                        animate={!fly ? "finish" : 'start'}
+                        transition={{duration: 0.5}}
+                        exit="finish"
                     >
-                        <div
+                        <motion.div
                             className="chip-animate"
-                            style={{transform: fly ? 'translateX(' + refRight + 'px) scale(0.5)' : null}}
+                            variants={variants3}
+                            initial="finish"
+                            animate={!fly ? "finish" : 'start'}
+                            transition={{duration: 1.1}}
+                            exit="finish"
                         >
                             <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M36 72C55.8823 72 72 55.8823 72 36C72 16.1177 55.8823 0 36 0C16.1177 0 0 16.1177 0 36C0 55.8823 16.1177 72 36 72Z" fill="#FFF2DA"/>
@@ -82,8 +102,8 @@ export default function Chip({x, y}) {
                                 <path d="M12.582 20.5901V51.4091L19.129 40.0711V31.9291L12.582 20.5901Z" fill="#5E5A94"/>
                                 <path d="M32.7271 32.2141L32.733 32.2241L12.582 20.5901L19.128 31.9281L46.325 47.6231H59.417L32.7271 32.2141Z" fill="#0C90CD"/>
                             </svg>
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
                 </motion.div>
             </motion.div>
         </AnimatePresence>
