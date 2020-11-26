@@ -10,6 +10,9 @@ export default function ContextProvider({ children }) {
         return window.innerWidth < window.innerHeight &&  window.innerWidth < 768 ? true : false;
     }
 
+    const nominal = 100;
+    const moneyBox = 10000;
+
     const defaultEm = window.innerWidth <= 768 ? 1.731707 : 2.17734;
     const [em, setEm] = useState(10);
     const [isMobile, setIsMobile] = useState(false);
@@ -17,7 +20,8 @@ export default function ContextProvider({ children }) {
     const [startGame, setStartGame] = useState(false);
     const [hideHit, setHideHit] = useState(false);
     const [countMoney, setCountMoney] = useState(0);
-    const [timer, setTimer] = useState(100);
+    const [timer, setTimer] = useState(60);
+    const [timer2, setTimer2] = useState(0);
     const [final, setFinal] = useState(false);
 
     useEffect(()=>{
@@ -39,6 +43,15 @@ export default function ContextProvider({ children }) {
         } 
     },[startGame, timer, final]);
 
+    useEffect(() => {
+        let t = timer2;
+        if(startGame){
+            setTimeout(()=>{
+                setTimer2(t + 1);
+            }, 600);
+        }
+    }, [startGame, timer2])
+
     const data = {
         em,
         defaultEm,
@@ -48,6 +61,7 @@ export default function ContextProvider({ children }) {
         hideHit,
         countMoney,
         timer,
+        timer2,
         final,
     }
 
@@ -60,12 +74,16 @@ export default function ContextProvider({ children }) {
         setHideHit(true);
     }
 
+    const hendleAddCounter = () => {
+        setCountMoney(countMoney + nominal);  
+    }
+
     window.addEventListener('resize', () =>{
         setEm(getEm());
         setIsMobile(getIsMobile())
     });
     return (
-        <Context.Provider value={{ ...data, handleGameLevel, onStartGame }}>
+        <Context.Provider value={{ ...data, handleGameLevel, onStartGame, setTimer2, hendleAddCounter, moneyBox, nominal }}>
         {children}
         </Context.Provider>
     );

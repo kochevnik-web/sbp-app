@@ -1,9 +1,12 @@
-import React, {useState, useRef} from 'react';
+import React, {useState, useRef, useContext} from 'react';
 import {motion, AnimatePresence } from 'framer-motion';
 
 import './Chip.scss';
+import { Context } from "../../context";
 
 export default function Chip({x, y}) {
+
+    const { hendleAddCounter } = useContext(Context);
 
     function getLeft(){
         const min = window.innerWidth <= 768 ? 2 : 23;
@@ -26,15 +29,15 @@ export default function Chip({x, y}) {
     const chipRef = useRef(null);
     const refTop = chipRef.current ? chipRef.current.getBoundingClientRect().top - y : 0;
     const refRight = chipRef.current ? x - chipRef.current.getBoundingClientRect().right : 0;
-    
-    if(chipRef.current) {
-        console.log(chipRef.current.getBoundingClientRect());
-        console.log(x,y,refTop, refRight);
-    }
 
     let clx = ['chip-wrap'];
     if(fly){
         clx.push('fly');
+    }
+
+    const hendleCounter = () => {
+        setFly(true);
+        hendleAddCounter();
     }
 
     let variants = {
@@ -54,13 +57,12 @@ export default function Chip({x, y}) {
                 ref={chipRef}
             >
                 <motion.div
-                    className="chip-wrap-hide"
+                    className={fly ? "chip-wrap-hide fly2" : "chip-wrap-hide"}
                     variants={variants}
-                    // animate={fly ? "finish" : 'start'}
-                    animate="finish"
+                    animate={fly ? "finish" : 'start'}
                     initial="finish"
                     exit="finish"
-                    onClick={()=> setFly(true)}
+                    onClick={hendleCounter}
                 >
                     <div className={clx.join(' ')}
                         style={{transform: fly ? 'translateY(-' + refTop + 'px)' : null}}

@@ -7,13 +7,15 @@ import { Context } from "../../context";
 
 export default function Timer() {
 
-    const { countMoney, timer, test } = useContext(Context);
+    const { countMoney, timer, moneyBox } = useContext(Context);
+    let b = Math.floor(countMoney/moneyBox * 10 * 2);
+    console.log(b)
 
     const curMarginLeft = window.innerWidth <= 768 ? '-6.5em' : '-2.2em';
 
     const elements = new Array(20).fill(0).map((el, idx, arr) => {
-        let color1 = idx < countMoney ? '#FBBB20' : '#C3D2BB';
-        let color2 = idx < countMoney ? '#FED072' : '#D7E1D2';
+        let color1 = idx < b ? '#FBBB20' : '#C3D2BB';
+        let color2 = idx < b ? '#FED072' : '#D7E1D2';
         return (
             <svg key={idx} style={{marginLeft: curMarginLeft, zIndex: arr.length - idx}} width="3.5em" height="3.6em" viewBox="0 0 35 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M17.416 35.075C26.8617 35.075 34.519 27.4177 34.519 17.972C34.519 8.52629 26.8617 0.869019 17.416 0.869019C7.97026 0.869019 0.312988 8.52629 0.312988 17.972C0.312988 27.4177 7.97026 35.075 17.416 35.075Z" fill={color1}/>
@@ -25,7 +27,7 @@ export default function Timer() {
     });
 
     return (
-        <div className="Timer" onClick={test}>
+        <div className="Timer">
             <div className="timer-counter">
                 {elements}
             </div>

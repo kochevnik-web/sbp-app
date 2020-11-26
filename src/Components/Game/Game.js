@@ -10,10 +10,11 @@ import Chip from '../Chip/Chip'
 
 export default function Game() {
 
+    const [curTime, setCurTime] = useState(-1);
+
     const chipRef = useRef(null);
     const refTop = chipRef.current ? chipRef.current.getBoundingClientRect().top : 0;
     const refRight = chipRef.current ? chipRef.current.getBoundingClientRect().right : 0;
-    console.log(refTop, refRight);
 
     function getRandObj (count){
         let arr = [];
@@ -25,12 +26,22 @@ export default function Game() {
 
     let animationData = getRandObj(4);
 
-    const { isMobile, defaultEm, startGame } = useContext(Context);
+    const { isMobile, timer2, defaultEm, startGame } = useContext(Context);
 
     const variants ={
         start: {scaleX: -1},
         finish: {scaleX: 1}
     }
+
+    useEffect(() => {
+        if(curTime !== timer2){
+            setCurTime(timer2);
+        }
+    }, [curTime, timer2])
+
+    const elements = new Array(800).fill(0).map((el, idx, arr) => {
+        if(startGame && timer2 >=idx) return <Chip x={refRight} y={refTop} />
+    });
 
     return (
         <motion.div className="Game" style={{height: isMobile ? 'auto' : window.innerWidth / defaultEm}} animate={{opacity: 1}} transition={{duration: 0.5}} initial={{opacity: 0}} ref={chipRef}>
@@ -830,7 +841,7 @@ export default function Game() {
             </div>
             
             <Timer />
-            {startGame ?  <Chip x={refRight} y={refTop} /> : ''}
+            {elements}
             <Hit />
         </motion.div>
     )
