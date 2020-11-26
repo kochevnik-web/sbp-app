@@ -1,4 +1,4 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext, useState, useEffect, useRef} from 'react';
 import {AnimatePresence, motion} from 'framer-motion';
 import './Game.scss';
 
@@ -9,6 +9,11 @@ import Timer from '../Timer/Timer'
 import Chip from '../Chip/Chip'
 
 export default function Game() {
+
+    const chipRef = useRef(null);
+    const refTop = chipRef.current ? chipRef.current.getBoundingClientRect().top : 0;
+    const refRight = chipRef.current ? chipRef.current.getBoundingClientRect().right : 0;
+    console.log(refTop, refRight);
 
     function getRandObj (count){
         let arr = [];
@@ -28,7 +33,7 @@ export default function Game() {
     }
 
     return (
-        <motion.div className="Game" style={{height: isMobile ? 'auto' : window.innerWidth / defaultEm}} animate={{opacity: 1}} transition={{duration: 0.5}} initial={{opacity: 0}}>
+        <motion.div className="Game" style={{height: isMobile ? 'auto' : window.innerWidth / defaultEm}} animate={{opacity: 1}} transition={{duration: 0.5}} initial={{opacity: 0}} ref={chipRef}>
             <div className="scene">
                 <svg width="113.7em" height="51.7em" viewBox="0 0 1207 544" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1207 0H0V544H1207V0Z" fill="#FFE4B3"/>
@@ -825,7 +830,7 @@ export default function Game() {
             </div>
             
             <Timer />
-            {startGame ?  <Chip /> : ''}
+            {startGame ?  <Chip x={refRight} y={refTop} /> : ''}
             <Hit />
         </motion.div>
     )

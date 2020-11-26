@@ -1,12 +1,36 @@
-import React, {useState} from 'react';
-import {motion, AnimatePresence} from 'framer-motion';
+import React, {useState, useRef} from 'react';
+import {motion, AnimatePresence } from 'framer-motion';
 
 import './Chip.scss';
 
-export default function Chip() {
+export default function Chip({x, y}) {
+
+    function getLeft(){
+        const min = window.innerWidth <= 768 ? 2 : 23;
+        const max = window.innerWidth <= 768 ? 51 : 75;
+
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function getTop(){
+        const min = window.innerWidth <= 768 ? 10 : 15;
+        const max = window.innerWidth <= 768 ? 60 : 40;
+
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
     const [fly, setFly] = useState(false);
-    const [randLeft, setRandLeft] = useState(Math.floor(Math.random() * (75 - 23 + 1)) + 23);
-    const [randRight, setRandRight] = useState(Math.floor(Math.random() * (40 - 15 + 1)) + 15);
+    const [randLeft, setRandLeft] = useState(getLeft());
+    const [randTop, setRandRight] = useState(getTop());
+
+    const chipRef = useRef(null);
+    const refTop = chipRef.current ? chipRef.current.getBoundingClientRect().top - y : 0;
+    const refRight = chipRef.current ? x - chipRef.current.getBoundingClientRect().right : 0;
+    
+    if(chipRef.current) {
+        console.log(chipRef.current.getBoundingClientRect());
+        console.log(x,y,refTop, refRight);
+    }
 
     let clx = ['chip-wrap'];
     if(fly){
@@ -26,18 +50,25 @@ export default function Chip() {
                 transition={{duration: 0.5, delay: 0.3, type:"spring"}}
                 initial={{opacity: 0, scale: 0.5, y: '20em'}}
                 exit={{opacity: 0}}
-                style={{left: randLeft + '%', bottom: randRight + '%'}}
+                style={{left: randLeft + '%', bottom: randTop + '%'}}
+                ref={chipRef}
             >
                 <motion.div
                     className="chip-wrap-hide"
                     variants={variants}
-                    animate="start"
+                    // animate={fly ? "finish" : 'start'}
+                    animate="finish"
                     initial="finish"
                     exit="finish"
                     onClick={()=> setFly(true)}
                 >
-                    <div className={clx.join(' ')} style={{transform: fly ? 'translateY(-300px)' : null}}>
-                        <div className="chip-animate" style={{transform: fly ? 'translateX(360px) scale(0.5)' : null}}>
+                    <div className={clx.join(' ')}
+                        style={{transform: fly ? 'translateY(-' + refTop + 'px)' : null}}
+                    >
+                        <div
+                            className="chip-animate"
+                            style={{transform: fly ? 'translateX(' + refRight + 'px) scale(0.5)' : null}}
+                        >
                             <svg viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M36 72C55.8823 72 72 55.8823 72 36C72 16.1177 55.8823 0 36 0C16.1177 0 0 16.1177 0 36C0 55.8823 16.1177 72 36 72Z" fill="#FFF2DA"/>
                                 <path d="M26.181 36L19.129 40.071L12.582 51.409L39.273 36H26.181Z" fill="#874591"/>

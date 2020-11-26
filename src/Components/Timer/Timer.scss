@@ -7,12 +7,25 @@
     background: #FFF2DA;
     padding: 0.2em 1em 0em 3em;
     border-radius: 3em;
+    z-index: 30;
+
+    @media(max-width: 768px) {
+        right: 3em;
+        top: 6em;
+        padding: 1.5em 2em 1em 9em;
+        border-radius: 6em;
+    }
 
     .timer-counter {
         margin: 0 0.5em 0 0;
 
         svg {
             position: relative;
+
+            @media(max-width: 768px) {
+                width: 9em;
+                height: 9em;
+            }
         }
     }
 
@@ -21,5 +34,9 @@
         font-weight: bold;
         width: 2.1em;
         z-index: 25;
+
+        @media(max-width: 768px) {
+            font-size: 6.8em;
+        }
     }
 }
