@@ -8,6 +8,7 @@ import Hit from '../Hit/Hit'
 import Timer from '../Timer/Timer'
 import Chip from '../Chip/Chip'
 import ChipError from '../ChipError/ChipError';
+import Chat from '../Chat/Chat';
 
 export default function Game() {
 
@@ -846,6 +847,7 @@ export default function Game() {
             </div>
             
             <Timer />
+            <Chat />
             {elementsErrors}
             {elements}
             <Hit />

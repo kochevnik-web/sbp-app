@@ -1,0 +1,17 @@
+.Chat {
+    position: absolute;
+    right: 1em;
+    top: 6em;
+    bottom: 2em;
+    overflow: hidden;
+    width: 35em;
+
+    .chat-list {
+        transform: translateY(25%);
+    }
+
+    svg {
+        width: 100%;
+        height: auto;
+    }
+}
