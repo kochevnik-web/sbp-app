@@ -6,6 +6,10 @@
     overflow: hidden;
     width: 35em;
 
+    @media (max-width: 768px){
+        width: 71em;
+    }
+
     .chat-list {
         transform: translateY(25%);
     }

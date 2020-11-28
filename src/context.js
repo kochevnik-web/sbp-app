@@ -18,6 +18,7 @@ export default function ContextProvider({ children }) {
     const [isMobile, setIsMobile] = useState(false);
     const [isGameLvl, setGemLvl] = useState(true);
     const [startGame, setStartGame] = useState(false);
+    const [startChat, setStartChat] = useState(false);
     const [hideHit, setHideHit] = useState(false);
     const [countMoney, setCountMoney] = useState(0);
     const [timer, setTimer] = useState(60);
@@ -70,6 +71,7 @@ export default function ContextProvider({ children }) {
         startGame,
         hideHit,
         countMoney,
+        startChat,
         timer,
         timer2,
         timer3,
@@ -83,6 +85,7 @@ export default function ContextProvider({ children }) {
     const onStartGame = () => {
         setStartGame(true);
         setHideHit(true);
+        setStartChat(true);
     }
 
     const hendleAddCounter = () => {

@@ -28,7 +28,7 @@ export default function Game() {
 
     let animationData = getRandObj(4);
 
-    const { isMobile, timer2, timer3, defaultEm, startGame } = useContext(Context);
+    const { isMobile, timer2, timer3, defaultEm, startGame, startChat } = useContext(Context);
 
     const variants ={
         start: {scaleX: -1},
@@ -847,7 +847,7 @@ export default function Game() {
             </div>
             
             <Timer />
-            <Chat />
+            {startChat && <Chat />}
             {elementsErrors}
             {elements}
             <Hit />

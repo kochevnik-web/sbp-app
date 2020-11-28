@@ -9,7 +9,6 @@ export default function Timer() {
 
     const { countMoney, timer, moneyBox } = useContext(Context);
     let b = Math.floor(countMoney/moneyBox * 10 * 2);
-    console.log(b)
 
     const curMarginLeft = window.innerWidth <= 768 ? '-6.5em' : '-2.2em';
 
