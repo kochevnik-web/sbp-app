@@ -16,11 +16,11 @@ export default function ContextProvider({ children }) {
     const defaultEm = window.innerWidth <= 768 ? 1.731707 : 2.17734;
     const [em, setEm] = useState(10);
     const [isMobile, setIsMobile] = useState(false);
-    const [isGameLvl, setGemLvl] = useState(true);
+    const [isGameLvl, setGemLvl] = useState(false);
     const [startGame, setStartGame] = useState(false);
     const [startChat, setStartChat] = useState(false);
     const [hideHit, setHideHit] = useState(false);
-    const [finalStage, setFinalStage] = useState(true);
+    const [finalStage, setFinalStage] = useState(false);
     const [countMoney, setCountMoney] = useState(0);
     const [timer, setTimer] = useState(60);
     const [timer2, setTimer2] = useState(0);
