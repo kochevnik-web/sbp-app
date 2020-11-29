@@ -5,11 +5,13 @@ import { Context } from "../../context";
 import logo from './img/logo.svg';
 import finalData from './finalData'
 
+import Shers from '../Shers/Shers'
+
 import './FinalStage.scss';
 
 export default function FinalStage() {
 
-    const { countMoney, moneyBox } = useContext(Context);
+    const { countMoney, moneyBox, defaultEm } = useContext(Context);
 
     const [p, setP] = useState({x: 0, y: 0})
 
@@ -30,7 +32,7 @@ export default function FinalStage() {
             animate={{opacity: 1}}
             transition={{duration: 0.5}}
             initial={{opacity: 0}}
-            style={{height: 'auto'}}
+            style={{height: window.innerWidth <= 768 ? 'auto' : window.innerWidth / defaultEm}}
             onMouseMove={(e) => paralax(e)}
         >
             <div className="content">
@@ -60,6 +62,7 @@ export default function FinalStage() {
                     </div>
                 </div>
             </div>
+            <Shers />
         </motion.div>
     )
 }

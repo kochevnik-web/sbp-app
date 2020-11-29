@@ -1,0 +1,71 @@
+.Shers {
+    position: absolute;
+    right: 0;
+
+    @media(max-width: 768px){
+        bottom: 10em;
+        display: flex;
+    }
+
+    .share-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        width: 7em;
+        height: 7em;
+        margin: 0 0 2em 0;
+
+        @media(max-width: 768px){
+            width: 13em;
+            height: 13em;
+            margin: 0 4em 0 0;
+        }
+
+        &:hover {
+            background: #1A0940;
+        }
+    }
+
+    .share-btn-vk {
+        background: #305C99;
+
+        svg {
+            width: 5.1em;
+            height: 3em;
+
+            @media(max-width: 768px){
+                width: 7.65em;
+                height: 4.5em;
+            }
+        }
+    }
+
+    .share-btn-tw {
+        background: #00CDFF;
+
+        svg {
+            width: 4.8em;
+            height: 3.8em;
+
+            @media(max-width: 768px){
+                width: 7.2em;
+                height: 5.7em;
+            }
+        }
+    }
+
+    .share-btn-fb {
+        background: #567CA4;
+
+        svg {
+            width: 2.4em;
+            height: 5em;
+
+            @media(max-width: 768px){
+                width: 3.6em;
+                height: 7.5em;
+            }
+        }
+    }
+}
