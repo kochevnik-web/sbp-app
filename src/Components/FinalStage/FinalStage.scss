@@ -10,23 +10,50 @@
         align-items: center;
         padding: 5em 0;
 
+        @media (max-width: 768px) {
+            flex-direction: row-reverse;
+            align-items: flex-start;
+            padding: 4em 4em 10em 4em;
+        }
+
         .logo {
             width: 18em;
             height: auto;
+
+            @media (max-width: 768px) {
+                position: absolute;
+                right: 4em;
+                top: 8em;
+                width: 41em;
+            }
         }
 
         .left {
             margin: 0 2em 0 0;
             width: 44.8em;
 
+            @media (max-width: 768px) {
+                margin: 0 0 0 5em;
+                width: 25%;
+                padding: 29em 0 0 0;
+            }
+
             img {
-                width: 100%;
+                width: 80%;
                 height: auto;
+
+                @media (max-width: 768px) {
+                    width: 100%;
+                }
             }
         }
 
         .right {
             width: 77.9em;
+
+            @media (max-width: 768px) {
+                width: 75%;
+            }
         }
 
         .title {
@@ -34,9 +61,17 @@
             font-weight: bold;
             margin: 3em 0 2em;
 
+            @media (max-width: 768px) {
+                line-height: 11em;
+            }
+
             span {
                 font-size: 5em;
                 display: block;
+
+                @media (max-width: 768px) {
+                    font-size: 10em;
+                }
             }
         }
 
@@ -44,8 +79,16 @@
             color: #1A0940;
             line-height: 3.4em;
 
+            @media (max-width: 768px) {
+                line-height: 5.2em;
+            }
+
             span {
                 font-size: 2.3em;
+
+                @media (max-width: 768px) {
+                    font-size: 4.5em;
+                }
             }
         }
 
@@ -59,8 +102,18 @@
             margin: 3em 0 0 0;
             cursor: pointer;
 
+            @media (max-width: 768px) {
+                width: 73em;
+                height: 13em;
+                margin: 6em 0 0 0;
+            }
+
             span {
                 font-size: 3.2em;
+
+                @media (max-width: 768px) {
+                    font-size: 5.2em;
+                }
             }
         }
 

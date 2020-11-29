@@ -44,11 +44,11 @@ export default function Game() {
     }, [curTime, timer2])
 
     const elements = new Array(100).fill(0).map((el, idx, arr) => {
-         return (startGame && timer2 >=idx) ? <Chip key={idx} x={refRight} y={refTop} /> : '';
+         return (startGame && timer2 >=idx && timer2 <= idx + 10) ? <Chip key={idx} x={refRight} y={refTop} /> : '';
     });
 
     const elementsErrors = new Array(50).fill(0).map((el, idx, arr) => {
-         return (startGame && timer3 >=idx) ? <ChipError key={idx} x={refRight} y={refTop} /> : '';
+         return (startGame && timer3 >=idx && timer3 <= idx + 6) ? <ChipError key={idx} x={refRight} y={refTop} /> : '';
     });
 
     return (
