@@ -42,10 +42,33 @@
 
         p {
             color: #1A0940;
-            line-height: 3.9em;
+            line-height: 3.4em;
 
             span {
-                font-size: 2.7em;
+                font-size: 2.3em;
+            }
+        }
+
+        .final-btn, .final-btn-more {
+            width: 48em;
+            height: 7em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            margin: 3em 0 0 0;
+            cursor: pointer;
+
+            span {
+                font-size: 3.2em;
+            }
+        }
+
+        .final-btn-more {
+            background: #954B97;
+
+            &:hover {
+                background: #1A0940;
             }
         }
     }
