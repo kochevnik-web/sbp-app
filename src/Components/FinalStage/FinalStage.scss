@@ -1,3 +1,52 @@
 .FinalStage {
-    
+    background-color: #EFEADC;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .content {
+        display: flex;
+        align-items: center;
+        padding: 5em 0;
+
+        .logo {
+            width: 18em;
+            height: auto;
+        }
+
+        .left {
+            margin: 0 2em 0 0;
+            width: 44.8em;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        .right {
+            width: 77.9em;
+        }
+
+        .title {
+            line-height: 5.3em;
+            font-weight: bold;
+            margin: 3em 0 2em;
+
+            span {
+                font-size: 5em;
+                display: block;
+            }
+        }
+
+        p {
+            color: #1A0940;
+            line-height: 3.9em;
+
+            span {
+                font-size: 2.7em;
+            }
+        }
+    }
 }

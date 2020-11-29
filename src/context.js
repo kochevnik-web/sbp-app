@@ -20,7 +20,7 @@ export default function ContextProvider({ children }) {
     const [startGame, setStartGame] = useState(false);
     const [startChat, setStartChat] = useState(false);
     const [hideHit, setHideHit] = useState(false);
-    const [finalStage, setFinalStage] = useState(false);
+    const [finalStage, setFinalStage] = useState(true);
     const [countMoney, setCountMoney] = useState(0);
     const [timer, setTimer] = useState(60);
     const [timer2, setTimer2] = useState(0);
