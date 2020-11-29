@@ -21,7 +21,7 @@ export default function ContextProvider({ children }) {
     const [startChat, setStartChat] = useState(false);
     const [hideHit, setHideHit] = useState(false);
     const [countMoney, setCountMoney] = useState(0);
-    const [timer, setTimer] = useState(60);
+    const [timer, setTimer] = useState(10);
     const [timer2, setTimer2] = useState(0);
     const [timer3, setTimer3] = useState(0);
     const [final, setFinal] = useState(false);

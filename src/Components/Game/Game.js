@@ -1,5 +1,6 @@
 import React, {useContext, useState, useEffect, useRef} from 'react';
 import {AnimatePresence, motion} from 'framer-motion';
+import Confetti from 'react-confetti';
 import './Game.scss';
 
 import { Context } from "../../context";
@@ -9,6 +10,7 @@ import Timer from '../Timer/Timer'
 import Chip from '../Chip/Chip'
 import ChipError from '../ChipError/ChipError';
 import Chat from '../Chat/Chat';
+import FinalBtn from '../FinalBtn/FinalBtn';
 
 export default function Game() {
 
@@ -28,7 +30,7 @@ export default function Game() {
 
     let animationData = getRandObj(4);
 
-    const { isMobile, timer2, timer3, defaultEm, startGame, startChat } = useContext(Context);
+    const { isMobile, timer2, timer3, defaultEm, startGame, startChat, final } = useContext(Context);
 
     const variants ={
         start: {scaleX: -1},
@@ -51,6 +53,7 @@ export default function Game() {
 
     return (
         <motion.div className="Game" style={{height: isMobile ? 'auto' : window.innerWidth / defaultEm}} animate={{opacity: 1}} transition={{duration: 0.5}} initial={{opacity: 0}} ref={chipRef}>
+            {final && <Confetti />}
             <div className="scene">
                 <svg width="113.7em" height="51.7em" viewBox="0 0 1207 544" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1207 0H0V544H1207V0Z" fill="#FFE4B3"/>
@@ -851,6 +854,7 @@ export default function Game() {
             {elementsErrors}
             {elements}
             <Hit />
+            {final && <FinalBtn />}
         </motion.div>
     )
 }

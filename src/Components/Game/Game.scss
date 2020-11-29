@@ -7,6 +7,9 @@
     background-position: center top;
     background-repeat: no-repeat;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     @media(max-width: 768px){
         background-image: none;
@@ -16,7 +19,7 @@
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
-        top: 0;
+        top: -0.3em;
 
         @media(max-width: 768px){
             left: 2em;
