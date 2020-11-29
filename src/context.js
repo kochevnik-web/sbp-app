@@ -10,7 +10,7 @@ export default function ContextProvider({ children }) {
         return window.innerWidth < window.innerHeight &&  window.innerWidth < 768 ? true : false;
     }
 
-    const nominal = 100;
+    const nominal = 110;
     const moneyBox = 10000;
 
     const defaultEm = window.innerWidth <= 768 ? 1.731707 : 2.17734;
@@ -20,8 +20,9 @@ export default function ContextProvider({ children }) {
     const [startGame, setStartGame] = useState(false);
     const [startChat, setStartChat] = useState(false);
     const [hideHit, setHideHit] = useState(false);
+    const [finalStage, setFinalStage] = useState(false);
     const [countMoney, setCountMoney] = useState(0);
-    const [timer, setTimer] = useState(10);
+    const [timer, setTimer] = useState(60);
     const [timer2, setTimer2] = useState(0);
     const [timer3, setTimer3] = useState(0);
     const [final, setFinal] = useState(false);
@@ -39,7 +40,7 @@ export default function ContextProvider({ children }) {
             }, 1000);
         }
 
-        if(timer <= 0 && !final){
+        if((timer <= 0 && !final) || (countMoney >=moneyBox && !final) ){
             setStartGame(false);
             setFinal(true);
         } 
@@ -76,6 +77,7 @@ export default function ContextProvider({ children }) {
         timer2,
         timer3,
         final,
+        finalStage,
     }
 
     const handleGameLevel = () => {
@@ -92,12 +94,16 @@ export default function ContextProvider({ children }) {
         setCountMoney(countMoney + nominal);  
     }
 
+    const handlerFinalStage = () => {
+        setFinalStage(true)
+    }
+
     window.addEventListener('resize', () =>{
         setEm(getEm());
         setIsMobile(getIsMobile())
     });
     return (
-        <Context.Provider value={{ ...data, handleGameLevel, onStartGame, setTimer2, hendleAddCounter, moneyBox, nominal }}>
+        <Context.Provider value={{ ...data, handleGameLevel, onStartGame, setTimer2, hendleAddCounter, moneyBox, nominal, handlerFinalStage }}>
         {children}
         </Context.Provider>
     );
