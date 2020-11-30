@@ -21,8 +21,10 @@ export default function ContextProvider({ children }) {
     const [startChat, setStartChat] = useState(false);
     const [hideHit, setHideHit] = useState(false);
     const [finalStage, setFinalStage] = useState(false);
+    const [startMicroTimer, setStartMicroTimer] = useState(false);
     const [countMoney, setCountMoney] = useState(0);
     const [timer, setTimer] = useState(60);
+    const [microTimer, setMicroTimer] = useState(3);
     const [timer2, setTimer2] = useState(0);
     const [timer3, setTimer3] = useState(0);
     const [final, setFinal] = useState(false);
@@ -44,7 +46,7 @@ export default function ContextProvider({ children }) {
             setStartGame(false);
             setFinal(true);
         } 
-    },[startGame, timer, final]);
+    },[startGame, countMoney, timer, final]);
 
     useEffect(() => {
         let t = timer2;
@@ -64,6 +66,20 @@ export default function ContextProvider({ children }) {
         }
     }, [startGame, timer3])
 
+    useEffect(() => {
+        let t = microTimer;
+        if(startMicroTimer && microTimer > 0){
+            setTimeout(()=>{
+                setMicroTimer(t - 1);
+            }, 1000);
+        }
+        if(microTimer <= 0 && startMicroTimer && !startGame){
+            setStartGame(true);
+            setStartMicroTimer(false);
+            setStartChat(true);
+        }
+    }, [setMicroTimer, microTimer, startMicroTimer, setStartChat, startGame])
+
     const data = {
         em,
         defaultEm,
@@ -78,6 +94,8 @@ export default function ContextProvider({ children }) {
         timer3,
         final,
         finalStage,
+        startMicroTimer,
+        microTimer
     }
 
     const handleGameLevel = () => {
@@ -86,7 +104,6 @@ export default function ContextProvider({ children }) {
 
     const onStartGame = () => {
         setStartGame(true);
-        setHideHit(true);
         setStartChat(true);
     }
 
@@ -98,12 +115,17 @@ export default function ContextProvider({ children }) {
         setFinalStage(true)
     }
 
+    const onStartMicroTimer = () => {
+        setStartMicroTimer(true);
+        setHideHit(true);
+    }
+
     window.addEventListener('resize', () =>{
         setEm(getEm());
         setIsMobile(getIsMobile())
     });
     return (
-        <Context.Provider value={{ ...data, handleGameLevel, onStartGame, setTimer2, hendleAddCounter, moneyBox, nominal, handlerFinalStage }}>
+        <Context.Provider value={{ ...data, handleGameLevel, onStartGame, setTimer2, hendleAddCounter, moneyBox, nominal, handlerFinalStage, onStartMicroTimer }}>
         {children}
         </Context.Provider>
     );

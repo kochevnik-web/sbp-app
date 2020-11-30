@@ -11,6 +11,7 @@ import Chip from '../Chip/Chip'
 import ChipError from '../ChipError/ChipError';
 import Chat from '../Chat/Chat';
 import FinalBtn from '../FinalBtn/FinalBtn';
+import MicroTimer from '../MicroTimer/MicroTimer';
 
 export default function Game() {
 
@@ -30,7 +31,7 @@ export default function Game() {
 
     let animationData = getRandObj(4);
 
-    const { isMobile, timer2, timer3, defaultEm, startGame, startChat, final } = useContext(Context);
+    const { isMobile, timer2, timer3, defaultEm, startGame, startChat, final, startMicroTimer } = useContext(Context);
 
     const variants ={
         start: {scaleX: -1},
@@ -855,6 +856,7 @@ export default function Game() {
             {elements}
             <Hit />
             {final && <FinalBtn />}
+            {startMicroTimer && !startGame && <MicroTimer />}
         </motion.div>
     )
 }
