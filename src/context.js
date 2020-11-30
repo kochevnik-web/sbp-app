@@ -10,6 +10,20 @@ export default function ContextProvider({ children }) {
         return window.innerWidth < window.innerHeight &&  window.innerWidth < 768 ? true : false;
     }
 
+    function getLeft(){
+        const min = window.innerWidth <= 768 ? 2 : 23;
+        const max = window.innerWidth <= 768 ? 51 : 75;
+
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function getTop(){
+        const min = window.innerWidth <= 768 ? 10 : 15;
+        const max = window.innerWidth <= 768 ? 60 : 70;
+
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
     const nominal = 110;
     const moneyBox = 10000;
 
@@ -73,9 +87,8 @@ export default function ContextProvider({ children }) {
                 setMicroTimer(t - 1);
             }, 1000);
         }
-        if(microTimer <= 0 && startMicroTimer && !startGame){
+        if(microTimer <= 0 && startMicroTimer && !startGame && !final){
             setStartGame(true);
-            setStartMicroTimer(false);
             setStartChat(true);
         }
     }, [setMicroTimer, microTimer, startMicroTimer, setStartChat, startGame])
@@ -125,7 +138,7 @@ export default function ContextProvider({ children }) {
         setIsMobile(getIsMobile())
     });
     return (
-        <Context.Provider value={{ ...data, handleGameLevel, onStartGame, setTimer2, hendleAddCounter, moneyBox, nominal, handlerFinalStage, onStartMicroTimer }}>
+        <Context.Provider value={{ ...data, handleGameLevel, onStartGame, setTimer2, hendleAddCounter, moneyBox, nominal, handlerFinalStage, onStartMicroTimer, getLeft, getTop }}>
         {children}
         </Context.Provider>
     );
