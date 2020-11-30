@@ -22,9 +22,12 @@ export default function FinalStage() {
 
     let CountShow = countMoney >= moneyBox ? moneyBox : countMoney;
 
-    let data = finalData[2];
+    let data = finalData[0];
     if (CountShow >= 5000) {data = finalData[1]}
     if (CountShow >= 10000) {data = finalData[0]}
+
+    let a = document.querySelector('head meta[property="og:image"]');
+    a.setAttribute('content', data.url);
 
     return (
         <motion.div
@@ -35,7 +38,7 @@ export default function FinalStage() {
             style={{height: window.innerWidth <= 768 ? 'auto' : window.innerWidth / defaultEm}}
             onMouseMove={(e) => paralax(e)}
         >
-            <div className="content">
+            <div className="content" imgData={data.url}>
                 <div className="left" style={{transform: 'translate(' + p.x + ', ' + p.y + ')'}}>
                     <img src={data.svg} alt="СБП - Система быстрых переводов"/>                       
                 </div>
@@ -62,7 +65,7 @@ export default function FinalStage() {
                     </div>
                 </div>
             </div>
-            <Shers />
+            <Shers imgShare={data.url} />
         </motion.div>
     )
 }
