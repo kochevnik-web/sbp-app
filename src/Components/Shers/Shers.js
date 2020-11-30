@@ -1,22 +1,17 @@
 import React from 'react';
 import {motion} from 'framer-motion';
-import {
-    FacebookShareButton,
-    TwitterShareButton,
-    VKShareButton,
-  } from "react-share";
+import {FacebookShareButton,TwitterShareButton,VKShareButton} from "react-share";
 
 import './Shers.scss';
 
 import data from './dataShers'
 
-export default function Shers() {
+export default function Shers({imgShare}) {
 
     let delay = 0.2;
     const title = '';
     const desc = '';
-    const url = 'http://localhost:3000/sbp';
-    const img = '';
+    const url = '';
 
     return (
         <div className="Shers">
@@ -31,19 +26,19 @@ export default function Shers() {
                         exit={window.innerWidth <= 768 ? {y: '13em'} : {x: '9em'}}
                         transition={{delay: delay, type: 'spring'}}
                     >
-                        {el.id === 'vk' && <VKShareButton url={url}>
+                        {el.id === 'vk' && <VKShareButton url={url} image={imgShare}>
                             <svg viewBox={el.viewBox} fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d={el.d} fill="white"/>
                             </svg>
                         </VKShareButton>}
 
-                        {el.id === 'tw' && <TwitterShareButton url={url}>
+                        {el.id === 'tw' && <TwitterShareButton url={url} image={imgShare}>
                             <svg viewBox={el.viewBox} fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d={el.d} fill="white"/>
                             </svg>
                         </TwitterShareButton>}
 
-                        {el.id === 'fb' && <FacebookShareButton url={url}>
+                        {el.id === 'fb' && <FacebookShareButton url={url} image={imgShare}>
                             <svg viewBox={el.viewBox} fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d={el.d} fill="white"/>
                             </svg>
