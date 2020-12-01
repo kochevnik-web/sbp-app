@@ -7,12 +7,18 @@ import './Hit.scss';
 
 export default function Hit() {
 
-    const { onStartGame, hideHit } = useContext(Context);
+    const { onStartMicroTimer, hideHit } = useContext(Context);
 
     return (
         <AnimatePresence>
             {!hideHit && (
-                <motion.div className="Hit" animate={{opacity: 1}} inlist={{opacity: 0}} transition={{duration: 0.5}} exit={{opacity: 0}}>
+                <motion.div
+                    className="Hit"
+                    animate={{opacity: 1}}
+                    inlist={{opacity: 0}}
+                    transition={{duration: 0.5}}
+                    exit={{opacity: 0}}
+                >
                     <div className="hit-message">
                         <div className="content">
                             <span>
@@ -20,7 +26,7 @@ export default function Hit() {
                             </span>
                         </div>
                         <div className="buttons">
-                            <span className="btn-start-game app-btn" onClick={onStartGame}>
+                            <span className="btn-start-game app-btn" onClick={onStartMicroTimer}>
                                 <span>
                                     Собрать
                                 </span>

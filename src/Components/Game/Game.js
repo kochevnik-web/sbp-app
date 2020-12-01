@@ -11,6 +11,8 @@ import Chip from '../Chip/Chip'
 import ChipError from '../ChipError/ChipError';
 import Chat from '../Chat/Chat';
 import FinalBtn from '../FinalBtn/FinalBtn';
+import MicroTimer from '../MicroTimer/MicroTimer';
+import PauseBtn from '../PauseBtn/PauseBtn';
 
 export default function Game() {
 
@@ -30,7 +32,7 @@ export default function Game() {
 
     let animationData = getRandObj(4);
 
-    const { isMobile, timer2, timer3, defaultEm, startGame, startChat, final } = useContext(Context);
+    const { isMobile, timer2, timer3, defaultEm, startGame, startChat, final, startMicroTimer } = useContext(Context);
 
     const variants ={
         start: {scaleX: -1},
@@ -294,8 +296,8 @@ export default function Game() {
                     <path d="M612.292 333.909C610.402 324.823 607.347 320.885 607.347 320.885C602.46 318.416 593.161 316.816 593.14 316.807L600.433 339.265L602.907 355.488C597.862 354.901 573.221 353.61 573.221 353.61C573.221 353.61 567.901 350.334 565.67 350.838C563.438 351.342 557.751 355.461 560.487 356.353C563.223 357.245 565.438 356.309 566.49 356.957C567.542 357.605 568.319 358.789 573.221 358.773C595.749 366.517 609.829 363.701 609.829 363.701C614.289 355.722 612.292 333.909 612.292 333.909Z" fill="#FFDD9E"/>
                     <path d="M593.715 350.324C594.03 358.303 595.907 373.791 612.646 382.082C612.691 382.103 612.735 382.127 612.78 382.145C608.251 367.025 602.645 347.534 600.002 335.239C596.928 339.835 593.544 345.931 593.715 350.324Z" fill="#1A0940"/>
                     <path d="M592.485 315.304C592.485 315.304 607.014 316.532 610.455 324.198C613.897 331.864 614.992 357.364 610.611 364.874C610.611 364.874 604.58 366.591 593.913 364.597C593.782 364.573 593.651 364.548 593.519 364.522C593.519 364.522 590.116 356.191 593.167 354.548C593.167 354.548 602.163 355.018 601.224 352.045C600.287 349.073 592.485 315.304 592.485 315.304Z" fill="#1A0940"/>
-                    <path d="M590.873 366.942L587.996 386.785" stroke="#2E3552" stroke-width="3" stroke-miterlimit="10"/>
-                    <path d="M628.755 347.762C628.755 347.762 638.168 358.399 639.214 366.155" stroke="#1A0940" stroke-width="2" stroke-miterlimit="10"/>
+                    <path d="M590.873 366.942L587.996 386.785" stroke="#2E3552" strokeWidth="3" strokeMiterlimit="10"/>
+                    <path d="M628.755 347.762C628.755 347.762 638.168 358.399 639.214 366.155" stroke="#1A0940" strokeWidth="2" strokeMiterlimit="10"/>
                     <path d="M572.399 368.711C572.399 368.711 621.145 363.904 632.65 364.427C644.155 364.95 661 366.942 661 366.942V388H569L572.399 368.711Z" fill="#FBBB20"/>
                     <path d="M594.887 507L589.749 388H649.444L638.423 507H594.887Z" fill="#EE7225"/>
                     <path d="M645 505H586V515H645V505Z" fill="#FBBB20"/>
@@ -851,10 +853,12 @@ export default function Game() {
             
             <Timer />
             {startChat && <Chat />}
+            {startGame && <PauseBtn />}
             {elementsErrors}
             {elements}
             <Hit />
             {final && <FinalBtn />}
+            {startMicroTimer && <MicroTimer />}
         </motion.div>
     )
 }
