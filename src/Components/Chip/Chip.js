@@ -6,7 +6,7 @@ import { Context } from "../../context";
 
 export default function Chip({x, y}) {
 
-    const { hendleAddCounter, getLeft, getTop } = useContext(Context);
+    const { hendleAddCounter, getLeft, getTop, pause } = useContext(Context);
 
     const [fly, setFly] = useState(false);
     const [randLeft, setRandLeft] = useState(getLeft());
@@ -22,8 +22,10 @@ export default function Chip({x, y}) {
     }
 
     const hendleCounter = () => {
-        setFly(true);
-        hendleAddCounter();
+        if (!pause) {
+            setFly(true);
+            hendleAddCounter();
+        }
     }
 
     let variants = {

@@ -12,6 +12,7 @@ import ChipError from '../ChipError/ChipError';
 import Chat from '../Chat/Chat';
 import FinalBtn from '../FinalBtn/FinalBtn';
 import MicroTimer from '../MicroTimer/MicroTimer';
+import PauseBtn from '../PauseBtn/PauseBtn';
 
 export default function Game() {
 
@@ -852,6 +853,7 @@ export default function Game() {
             
             <Timer />
             {startChat && <Chat />}
+            {startGame && <PauseBtn />}
             {elementsErrors}
             {elements}
             <Hit />

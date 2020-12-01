@@ -30,14 +30,15 @@ export default function ContextProvider({ children }) {
     const defaultEm = window.innerWidth <= 768 ? 1.731707 : 2.17734;
     const [em, setEm] = useState(10);
     const [isMobile, setIsMobile] = useState(false);
-    const [isGameLvl, setGemLvl] = useState(false);
+    const [isGameLvl, setGemLvl] = useState(true);
     const [startGame, setStartGame] = useState(false);
     const [startChat, setStartChat] = useState(false);
     const [hideHit, setHideHit] = useState(false);
     const [finalStage, setFinalStage] = useState(false);
+    const [pause, setPause] = useState(false);
     const [startMicroTimer, setStartMicroTimer] = useState(false);
     const [countMoney, setCountMoney] = useState(0);
-    const [timer, setTimer] = useState(60);
+    const [timer, setTimer] = useState(160);
     const [microTimer, setMicroTimer] = useState(3);
     const [timer2, setTimer2] = useState(0);
     const [timer3, setTimer3] = useState(0);
@@ -52,7 +53,9 @@ export default function ContextProvider({ children }) {
         let t = timer;
         if(timer > 0 && startGame){
             setTimeout(()=>{
-                setTimer(t -1);
+                if(!pause) {
+                    setTimer(t -1);
+                }
             }, 1000);
         }
 
@@ -60,25 +63,29 @@ export default function ContextProvider({ children }) {
             setStartGame(false);
             setFinal(true);
         } 
-    },[startGame, countMoney, timer, final]);
+    },[startGame, countMoney, timer, final, pause]);
 
     useEffect(() => {
         let t = timer2;
         if(startGame){
             setTimeout(()=>{
-                setTimer2(t + 1);
+                if(!pause) {
+                    setTimer2(t + 1);
+                }
             }, 600);
         }
-    }, [startGame, timer2])
+    }, [startGame, timer2, pause])
 
     useEffect(() => {
         let t = timer3;
         if(startGame){
             setTimeout(()=>{
-                setTimer3(t + 1);
+                if(!pause) {
+                    setTimer3(t + 1);
+                }
             }, 1900);
         }
-    }, [startGame, timer3])
+    }, [startGame, timer3, pause])
 
     useEffect(() => {
         let t = microTimer;
@@ -108,7 +115,8 @@ export default function ContextProvider({ children }) {
         final,
         finalStage,
         startMicroTimer,
-        microTimer
+        microTimer,
+        pause
     }
 
     const handleGameLevel = () => {
@@ -133,12 +141,16 @@ export default function ContextProvider({ children }) {
         setHideHit(true);
     }
 
+    const hendlerPause = () => {
+        setPause(!pause)
+    }
+
     window.addEventListener('resize', () =>{
         setEm(getEm());
         setIsMobile(getIsMobile())
     });
     return (
-        <Context.Provider value={{ ...data, handleGameLevel, onStartGame, setTimer2, hendleAddCounter, moneyBox, nominal, handlerFinalStage, onStartMicroTimer, getLeft, getTop }}>
+        <Context.Provider value={{ ...data, handleGameLevel, onStartGame, setTimer2, hendleAddCounter, moneyBox, nominal, handlerFinalStage, onStartMicroTimer, hendlerPause, getLeft, getTop }}>
         {children}
         </Context.Provider>
     );
