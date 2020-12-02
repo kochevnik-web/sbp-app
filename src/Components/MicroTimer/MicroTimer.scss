@@ -3,4 +3,9 @@
     font-size: 25em;
     z-index: 20;
     color: #1D1346;
+
+    @media(max-width: 768px){
+        position: absolute;
+        top: 18%;
+    }
 }

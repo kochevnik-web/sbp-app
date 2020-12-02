@@ -5,4 +5,11 @@
     top: 9em;
     right: 2em;
     cursor: pointer;
+
+    @media(max-width: 768px) {
+        width: 10.5em;
+        height: 10.5em;
+        top: 7em;
+        right: 43em;
+    }
 }

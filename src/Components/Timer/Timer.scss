@@ -10,10 +10,11 @@
     z-index: 30;
 
     @media(max-width: 768px) {
-        right: 3em;
+        right: 50%;
         top: 6em;
         padding: 1.5em 2em 1em 9em;
         border-radius: 6em;
+        transform: translateX(50%);
     }
 
     .timer-counter {

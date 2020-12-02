@@ -10,9 +10,13 @@ export default function ContextProvider({ children }) {
         return window.innerWidth < window.innerHeight &&  window.innerWidth < 768 ? true : false;
     }
 
+    function getIsMobileGame (){
+        return window.innerWidth < 768 ? true : false;
+    }
+
     function getLeft(){
         const min = window.innerWidth <= 768 ? 2 : 23;
-        const max = window.innerWidth <= 768 ? 51 : 75;
+        const max = window.innerWidth <= 768 ? 88 : 75;
 
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
@@ -30,6 +34,7 @@ export default function ContextProvider({ children }) {
     const defaultEm = window.innerWidth <= 768 ? 1.731707 : 2.17734;
     const [em, setEm] = useState(10);
     const [isMobile, setIsMobile] = useState(false);
+    const [isMobileGame, setIsMobileGame] = useState(getIsMobileGame());
     const [isGameLvl, setGemLvl] = useState(true);
     const [startGame, setStartGame] = useState(false);
     const [startChat, setStartChat] = useState(false);
@@ -104,6 +109,7 @@ export default function ContextProvider({ children }) {
         em,
         defaultEm,
         isMobile,
+        isMobileGame,
         isGameLvl,
         startGame,
         hideHit,

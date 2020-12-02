@@ -4,17 +4,29 @@ import {motion, AnimatePresence } from 'framer-motion';
 import './Chip.scss';
 import { Context } from "../../context";
 
-export default function Chip({x, y}) {
+export default function Chip({x, y, w}) {
 
-    const { hendleAddCounter, getLeft, getTop, pause } = useContext(Context);
+    const { hendleAddCounter, getLeft, getTop, pause, isMobileGame } = useContext(Context);
 
     const [fly, setFly] = useState(false);
     const [randLeft, setRandLeft] = useState(getLeft());
     const [randTop, setRandRight] = useState(getTop());
 
     const chipRef = useRef(null);
-    const refTop = chipRef.current ? chipRef.current.getBoundingClientRect().top - y : 0;
-    const refRight = chipRef.current ? x - chipRef.current.getBoundingClientRect().right : 0;
+
+    let refTop = chipRef.current ? chipRef.current.getBoundingClientRect().top - y : 0;
+    let refRight = chipRef.current ? x - chipRef.current.getBoundingClientRect().right : 0;
+   
+    if(isMobileGame){
+        refTop = chipRef.current ? chipRef.current.getBoundingClientRect().top - y : 0;
+        if(chipRef.current){
+            if(w/2 < chipRef.current.getBoundingClientRect().right){
+                refRight = chipRef.current ? chipRef.current.getBoundingClientRect().right - x * 1.5 : 0;
+            } else {
+                refRight = chipRef.current ? x - chipRef.current.getBoundingClientRect().right : 0;
+            }
+        }
+    }
 
     let clx = ['chip-wrap'];
     if(fly){
