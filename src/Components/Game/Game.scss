@@ -12,7 +12,9 @@
     justify-content: center;
 
     @media(max-width: 768px){
-        background-image: none;
+        background-image: url(../Game/img/bg-mobile.svg);
+        background-size: contain;
+        background-position: center bottom;
     }
 
     .scene {
@@ -53,6 +55,13 @@
                 height: 90.26em;
             }
         }
+    }
+
+    .game-logo {
+        position: absolute;
+        left: 6em;
+        top: 6em;
+        width: 32em;
     }
 }
 
