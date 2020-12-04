@@ -43,7 +43,7 @@ export default function ContextProvider({ children }) {
     const [pause, setPause] = useState(false);
     const [startMicroTimer, setStartMicroTimer] = useState(false);
     const [countMoney, setCountMoney] = useState(0);
-    const [timer, setTimer] = useState(160);
+    const [timer, setTimer] = useState(10);
     const [microTimer, setMicroTimer] = useState(3);
     const [timer2, setTimer2] = useState(0);
     const [timer3, setTimer3] = useState(0);
