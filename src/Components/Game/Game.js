@@ -13,6 +13,7 @@ import Chat from '../Chat/Chat';
 import FinalBtn from '../FinalBtn/FinalBtn';
 import MicroTimer from '../MicroTimer/MicroTimer';
 import PauseBtn from '../PauseBtn/PauseBtn';
+import MobileChat from '../MobileChat/MobileChat';
 
 import logo from './img/logo.svg';
 
@@ -877,6 +878,7 @@ export default function Game() {
             )}
 
             <Timer />
+            {isMobileGame && <MobileChat />}
             {startChat && !isMobileGame && <Chat />}
             {startGame && <PauseBtn />}
             {elementsErrors}

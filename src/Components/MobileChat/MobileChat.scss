@@ -1,0 +1,17 @@
+.MobileChat {
+    position: absolute;
+    width: 100%;
+    height: 10.81em;
+    background: #FFF2DA;
+    top: 21em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    span {
+        font-size: 5.4em;
+        font-weight: bold;
+        color: #3364FF;
+    }
+}
