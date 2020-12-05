@@ -69,3 +69,31 @@
         }
     }
 }
+
+.vertical {
+    .Shers {
+        position: relative;
+        padding: 9em 9em 3em;
+
+        .share-btn {
+            width: 31.2em;
+            height: 31.2em;
+            margin: 0;
+        }
+
+        .share-btn-vk svg {
+            width: 22.25em;
+            height: 13.27em;
+        }
+
+        .share-btn-tw svg {
+            width: 20.97em;
+            height: 16.69em;
+        }
+
+        .share-btn-fb svg {
+            width: 9.84em;
+            height: 21.82em;
+        }
+    }
+}

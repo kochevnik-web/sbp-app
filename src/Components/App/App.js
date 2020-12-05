@@ -19,8 +19,8 @@ function App() {
 		<motion.div className={clx.join(' ')} style={{fontSize: em}} animate={{opacity: 1}} transition={{duration: 0.5}} initial={{opacity: 0}}>
 			<Start />
 			{isGameLvl && !finalStage ? <Game /> : ''}
+			{isMobile && !finalStage && isGameLvl && <Overlay />}
 			{finalStage ? <FinalStage /> : ''}
-			{isMobile && <Overlay />}
 		</motion.div>
 	);
 }

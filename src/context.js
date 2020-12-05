@@ -35,7 +35,7 @@ export default function ContextProvider({ children }) {
     const [em, setEm] = useState(10);
     const [isMobile, setIsMobile] = useState(false);
     const [isMobileGame, setIsMobileGame] = useState(getIsMobileGame());
-    const [isGameLvl, setGemLvl] = useState(true);
+    const [isGameLvl, setGemLvl] = useState(false);
     const [startGame, setStartGame] = useState(false);
     const [startChat, setStartChat] = useState(false);
     const [hideHit, setHideHit] = useState(false);
@@ -153,7 +153,8 @@ export default function ContextProvider({ children }) {
 
     window.addEventListener('resize', () =>{
         setEm(getEm());
-        setIsMobile(getIsMobile())
+        setIsMobile(getIsMobile());
+        setIsMobileGame(getIsMobileGame());
     });
     return (
         <Context.Provider value={{ ...data, handleGameLevel, onStartGame, setTimer2, hendleAddCounter, moneyBox, nominal, handlerFinalStage, onStartMicroTimer, hendlerPause, getLeft, getTop }}>

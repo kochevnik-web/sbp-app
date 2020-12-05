@@ -11,27 +11,32 @@ import './FinalStage.scss';
 
 export default function FinalStage() {
 
-    const { countMoney, moneyBox, defaultEm } = useContext(Context);
+    const { countMoney, moneyBox, defaultEm, isMobile } = useContext(Context);
 
     const [p, setP] = useState({x: 0, y: 0})
 
-    const colors = ['#0095D4', '#007C37', '#65B32E'];
+    const colors = ['#0095D4', '#007C37', '#65B32E', '#FEB215'];
     const paralax = (e) => {
         setP({x: (e.pageX * -1 / 200) + 'px ', y: (e.pageY * -1 / 200) + 'px'});
     }
 
     let CountShow = countMoney >= moneyBox ? moneyBox : countMoney;
 
-    let data = finalData[0];
+    let data = finalData[2];
     if (CountShow >= 5000) {data = finalData[1]}
     if (CountShow >= 10000) {data = finalData[0]}
 
     let a = document.querySelector('head meta[property="og:image"]');
     a.setAttribute('content', data.url);
 
+    let clx = ['FinalStage'];
+    if(isMobile){clx.push('vertical');}
+
+    const runTitles = isMobile ? data.titlesMobile : data.titles;
+
     return (
         <motion.div
-            className="FinalStage"
+            className={clx.join(' ')}
             animate={{opacity: 1}}
             transition={{duration: 0.5}}
             initial={{opacity: 0}}
@@ -39,21 +44,26 @@ export default function FinalStage() {
             onMouseMove={(e) => paralax(e)}
         >
             <div className="content" imgData={data.url}>
-                <div className="left" style={{transform: 'translate(' + p.x + ', ' + p.y + ')'}}>
-                    <img src={data.svg} alt="СБП - Система быстрых переводов"/>                       
-                </div>
+                {!isMobile &&(
+                    <div className="left" style={{transform: 'translate(' + p.x + ', ' + p.y + ')'}}>
+                        <img src={data.svg} alt="СБП - Система быстрых переводов"/>
+                    </div>
+                )}
+
                 <div className="right">
                     <img src={logo} className="logo" alt="СБП - Система быстрых переводов"/>
                     <div className="title">
-                        {data.titles.map((el, ind, arr)=>{
+                        {runTitles.map((el, ind, arr)=>{
                             let count = ind === arr.length - 1 ? CountShow + '₽' : '';
                             return <span key={ind} style={{color: colors[ind]}}>{el + count}</span>
                         })}
                     </div>
                     <p>
-                        <span>
-                            {data.text}
-                        </span>
+                        {data.text.map((el, ind, arr)=>{
+                            return (
+                                isMobile && ind === 1 && data.svg2 ? <><img src={data.svg2}/><span key={ind}>{el}</span></> : <span key={ind}>{el}</span>
+                            )
+                        })}
                     </p>
                     <div className="buttons">
                         <a href="#" target="blank" className="final-btn app-btn">
