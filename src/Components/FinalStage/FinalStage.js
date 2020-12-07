@@ -23,8 +23,8 @@ export default function FinalStage() {
     let CountShow = countMoney >= moneyBox ? moneyBox : countMoney;
 
     let data = finalData[2];
-    if (CountShow >= 5000) {data = finalData[1]}
-    if (CountShow >= 10000) {data = finalData[0]}
+    if (CountShow > 6000) {data = finalData[1]}
+    if (CountShow > 8000) {data = finalData[0]}
 
     let a = document.querySelector('head meta[property="og:image"]');
     a.setAttribute('content', data.url);
@@ -61,12 +61,12 @@ export default function FinalStage() {
                     <p>
                         {data.text.map((el, ind, arr)=>{
                             return (
-                                isMobile && ind === 1 && data.svg2 ? <><img src={data.svg2}/><span key={ind}>{el}</span></> : <span key={ind}>{el}</span>
+                                isMobile && ind === 1 && data.svg2 ? <><img src={data.svg2} alt="img"/><span key={ind}>{el}</span></> : <span key={ind}>{el}</span>
                             )
                         })}
                     </p>
                     <div className="buttons">
-                        <a href="#" target="blank" className="final-btn app-btn">
+                        <a href="https://sbp.nspk.ru/faq/?utm_source=medialeaks&utm_medium=fix&utm_campaign=nspk_2020_sbp_jun_aug_sp&utm_term=game" target="blank" className="final-btn app-btn">
                             <span>Научите пользоваться СБП!</span>
                         </a>
                         <span className="final-btn-more" onClick={() => window.location.reload()}>
