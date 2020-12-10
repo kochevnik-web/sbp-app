@@ -26,8 +26,8 @@ function App() {
                 <div className="title-for-mobile">
                     <span style={{color: '#0095D4'}}>В бой идёт родительский</span> 
                     <span style={{color: '#007C37'}}>комитет. Сможешь ли ты</span>
-                    <span style={{color: '#65B32E'}}>собрать деньгина</span>
-                    <span style={{color: '#65B32E'}}>линолеум?</span>
+                    <span style={{color: '#65B32E'}}>собрать деньги на</span>
+                    <span style={{color: '#EE7225'}}>линолеум?</span>
                 </div>
                 <p>
                     <span>
